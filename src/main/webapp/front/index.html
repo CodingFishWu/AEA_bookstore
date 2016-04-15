@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>My Bookstore</title>
+    <meta name="description" content="secret web site">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/content.css">
+    <link rel="stylesheet" href="css/book.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/order.css">
+  </head>
+  <body>
+    <div ui-view></div>
+
+
+    <!-- use boot cdn -->
+    <!-- <script src="//cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular-messages.min.js"></script>
+    <script src="//cdn.bootcss.com/angular-ui-bootstrap/1.2.1/ui-bootstrap-tpls.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.0/angular-resource.min.js"></script>
+    <script src="//cdn.bootcss.com/angular-ui-router/0.2.18/angular-ui-router.js"></script> -->
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="js/resource.js"></script>
+
+    <script src="views/nav.js"></script>
+    <script src="views/login/module.js"></script>
+    <script src="views/book/module.js"></script>
+    <script src="views/cart/module.js"></script>
+    <script src="views/order/module.js"></script>
+    <script src="views/manage/module.js"></script>
+    
+  </body>
+</html>

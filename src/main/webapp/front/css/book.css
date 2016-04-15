@@ -1,0 +1,42 @@
+/*
+** panel
+*/
+.panel-book {
+  height: 150px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+}
+
+.book-image {
+  display: block;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 150px;
+  width: 120px;
+  padding: 0;
+}
+
+.book-desc {
+  display: block;
+  float: left;
+  width: 50%;
+}
+
+.book-options {
+  display: block;
+  float: left;
+}
+.book-options>button {
+  margin-left: 20px;
+}
+
+/*
+** filter stick in the left
+*/
+.panel-book-filter {
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}

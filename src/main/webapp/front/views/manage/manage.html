@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+
+      <ul class="nav nav-sidebar">
+        <li ng-class="{'active': ctrl.$state.current.data.page=='book'}">
+          <a ui-sref="nav.manage.book">图书列表</a>
+        </li>
+        <li ng-class="{'active': ctrl.$state.current.data.page=='user'}">
+          <a ui-sref="nav.manage.user">用户列表</a>
+        </li>
+      
+      </ul>
+
+    </div>
+    <div class="col-sm-9 col-md-10 col-sm-offset-3 col-md-offset-2 content">
+    	<div ui-view></div>
+    </div>
+  </div>
+</div>

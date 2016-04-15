@@ -1,0 +1,14 @@
+.panel-order {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.panel-order>.panel-heading {
+	cursor: pointer;
+}
+
+.panel-order-animate {
+	transition:all linear 0.5s;
+}
+.panel-order-animate.ng-hide {
+	opacity: 0;
+}

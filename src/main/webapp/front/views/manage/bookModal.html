@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h4>{{ctrl.title}}</h4>
+</div>
+
+<div class="modal-body">
+  <form class="form">
+    <div class="form-group">
+      <label>书的id</label>
+      <input type="text" class="form-control" ng-model="ctrl.id" required>
+    </div>
+    <div class="form-group">
+      <label>书名</label>
+      <input type="text" class="form-control" ng-model="ctrl.name" required>
+    </div>
+    <div class="form-group">
+      <label>作者</label>
+      <input type="text" class="form-control" ng-model="ctrl.author" required>
+    </div>
+    <div class="form-group">
+      <label>价格</label>
+      <input type="number" class="form-control" ng-model="ctrl.price" required>
+    </div>
+    <div class="form-group">
+      <label>库存</label>
+      <input type="number" class="form-control" ng-model="ctrl.stock" required>
+    </div>
+    <div class="form-group">
+      <label>类型</label>
+      <input type="text" class="form-control" ng-model="ctrl.category" required>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-default" ng-click='ctrl.submit()'>提交</button>
+</div>

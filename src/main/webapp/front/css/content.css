@@ -1,0 +1,27 @@
+.content {
+  padding: 20px;
+}
+
+
+
+table {
+  margin: 10px;
+}
+
+/*
+**  set the button in table more small
+*/
+.btn-group>button {
+  height: 25px;
+  padding-top: 2px;
+  padding-left: 2px;
+  padding-right: 3px;
+}
+
+/*
+**  error
+*/
+.error {
+  color: red;
+}
+
