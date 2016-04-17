@@ -1,0 +1,22 @@
+.chatroom {
+    height: 400px;
+    overflow: auto;
+}
+
+.chatroom-info {
+    size: 20px;
+    color: red;
+}
+
+.chatroom-chat {
+    color: rgb(43,178,225);
+
+}
+
+.chatroom-users {
+    max-height: 500px;
+    overflow: auto;
+}
+.chatroom-users>.panel-body>p {
+    margin: 5px;
+}

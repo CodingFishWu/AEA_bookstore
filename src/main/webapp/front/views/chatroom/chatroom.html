@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>聊天室</h3>
+            <div class="panel panel-default chatroom">
+                <div class="panel-body">
+                    <p ng-repeat="item in ctrl.contents track by $index">
+                        <span class="chatroom-{{item.type}}">{{item.prompt}}:</span>
+                        <span class="chatroom-content">{{item.content}}</span>
+                    </p>
+
+                </div>
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="ctrl.message">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="ctrl.send()">
+                        <span class="glyphicon glyphicon-share-alt"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel panel-default chatroom-users">
+                <div class="panel-heading">参与用户</div>
+                <div class="panel-body">
+                    <p ng-repeat="item in ctrl.users track by $index">{{item}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

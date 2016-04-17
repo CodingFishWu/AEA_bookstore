@@ -31,6 +31,11 @@ angular.module('resources', ['ngResource'])
 			},
 			isArray: false
 		},
+		get: {
+			method: 'GET',
+			url: baseUrl + '/user',
+			isArray: false
+		},
 		query: {
 			method: 'GET',
 			url: baseUrl + '/admin',

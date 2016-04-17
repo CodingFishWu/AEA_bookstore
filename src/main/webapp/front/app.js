@@ -3,6 +3,7 @@ var myApp = angular.module('myApp',[
 	'ui.router',
   'ngMessages',
   'ngAnimate',
+    'ngWebSocket',
 
   'resources',
   'navModule',
@@ -11,7 +12,8 @@ var myApp = angular.module('myApp',[
   'bookModule',
   'cartModule',
   'orderModule',
-  'manageModule'
+  'manageModule',
+    'chatroomModule'
 
   ]);
 
@@ -75,6 +77,17 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
       }
     })
 
+    /*
+    ** chat room
+    */
+      .state('nav.chatroom', {
+        url: '/chatroom',
+        templateUrl: 'views/chatroom/chatroom.html',
+        controller: 'chatroomCtrl as ctrl',
+        data: {
+          nav: 'chatroom'
+        }
+      })
     /*
     ** magage
     */

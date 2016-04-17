@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Writer;
 
 /**
  * Created by fish on 4/5/16.
@@ -54,6 +55,21 @@ public class UserServlet extends HttpServlet {
         catch (Exception e) {
             resp.setStatus(400);
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Writer out = resp.getWriter();
+        JSONObject jsonObject = new JSONObject();
+        String name = (String)req.getSession().getAttribute("name");
+        if (name == null) {
+            resp.setStatus(403);
+        }
+        else {
+            jsonObject.put("name", req.getSession().getAttribute("name"));
+            out.write(jsonObject.toString());
+            resp.setStatus(200);
         }
     }
 }
