@@ -5,10 +5,15 @@ import model.Item;
 import model.Order;
 import service.CartService;
 
+import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.inject.Inject;
+import javax.jms.*;
+import javax.jms.Queue;
+import javax.naming.InitialContext;
 import java.util.*;
 
 /**
@@ -19,6 +24,10 @@ import java.util.*;
 public class CartServiceImpl implements CartService{
     @EJB
     OrderDao orderDao;
+
+
+
+
 
     private ArrayList<Item> items = new ArrayList<Item>();
     private int count = 0;
@@ -70,7 +79,25 @@ public class CartServiceImpl implements CartService{
         String id = String.format("%d%d%d%d%d%d%d", year, month, day, hour, minute, second, random.nextInt()%1000000);
         order.setId(id);
 
-        orderDao.add(order);
+//        orderDao.add(order);
+
+        try {
+            InitialContext ctx = new InitialContext();
+            Queue dest = (Queue) ctx.lookup("/queue/OrderQueue");
+            QueueConnectionFactory factory
+                    = (QueueConnectionFactory) ctx.lookup("ConnectionFactory");
+            QueueConnection cnn = factory.createQueueConnection();
+            QueueSession session = cnn.createQueueSession(false, QueueSession.AUTO_ACKNOWLEDGE);
+            QueueSender sender = session.createSender(dest);
+            ObjectMessage objectMessage = session.createObjectMessage();
+            objectMessage.setObject(order);
+            sender.send(objectMessage);
+            session.close();
+            cnn.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         return true;

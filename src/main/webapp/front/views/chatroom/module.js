@@ -19,7 +19,7 @@ class ChatroomCtrl {
         self.UserService.get(function (result) {
             self.name = result.name;
 
-            self.connection = self.$websocket('ws://localhost:8081/Bookstore/websocketbot');
+            self.connection = self.$websocket('ws://localhost:8080/Bookstore/websocketbot');
             self.connection.send({
                 type: 'join',
                 name: self.name
