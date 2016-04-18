@@ -21,7 +21,7 @@ import java.util.Date;
  * Created by fish on 3/25/16.
  */
 
-@TransactionAttribute(TransactionAttributeType.MANDATORY)
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
 @Stateless
 public class BookDaoImpl implements BookDao {
     @Override

@@ -10,11 +10,14 @@ import model.Order;
 import org.bson.Document;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import java.util.*;
 
 /**
  * Created by fish on 4/8/16.
  */
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
 @Stateless
 public class OrderDaoImpl implements OrderDao{
 
