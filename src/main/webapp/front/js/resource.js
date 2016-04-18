@@ -63,6 +63,15 @@ angular.module('resources', ['ngResource'])
 			},
 			isArray: true
 		},
+		adminQuery: {
+			method: 'GET',
+			url: baseUrl + '/admin',
+			params: {
+				target: 'book',
+				action: 'list'
+			},
+			isArray: true
+		},
 		update: {
 			method: 'PUT',
 			url: baseUrl + '/admin',

@@ -41,6 +41,14 @@ public class AdminServlet extends HttpServlet{
                     resp.setStatus(200);
                 }
             }
+            if (target.equals("book")) {
+                if (action.equals("list")) {
+                    Book[] books = bookService.getList();
+                    JSONArray jsonArray = Tools.bookArrayToJSONArray(books);
+                    out.write(jsonArray.toString());
+                    resp.setStatus(200);
+                }
+            }
         }
         catch (Exception e) {
             resp.setStatus(400);

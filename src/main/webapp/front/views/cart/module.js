@@ -14,6 +14,11 @@ class CartCtrl {
 		self.CartService.get(function(result) {
 			// console.log(result);
 			self.cart = result;
+		}, function(err) {
+			if(err.status == 403) {
+				alert('请先登录');
+				self.$state.go('login');
+			}
 		});
 	}
 

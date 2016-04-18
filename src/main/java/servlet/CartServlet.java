@@ -27,6 +27,10 @@ public class CartServlet extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         JSONObject jsonObject;
+        if (req.getSession().getAttribute("name") == null) {
+            resp.setStatus(403);
+            return;
+        }
 
         if (action == null) {
             return;
@@ -71,6 +75,11 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            if (req.getSession().getAttribute("name") == null) {
+                resp.setStatus(403);
+                return;
+            }
+
             Writer out = resp.getWriter();
             ArrayList<Item> cart = cartService.get();
             JSONArray jsonArray = Tools.itemsToJsonArray(cart);

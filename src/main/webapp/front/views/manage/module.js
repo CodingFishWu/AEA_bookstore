@@ -15,7 +15,7 @@ class BookManageCtrl {
 	}
 
 	getBooks() {
-		this.books = this.BookService.query();
+		this.books = this.BookService.adminQuery();
 	}
 
 	update(index) {

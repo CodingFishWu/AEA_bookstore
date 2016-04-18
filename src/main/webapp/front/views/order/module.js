@@ -11,7 +11,7 @@ class OrderCtrl {
 			self.orders = result;
 			console.log(result);
 		}, function(err) {
-			if (err.status == 401) {
+			if (err.status == 403) {
 				alert('请先登录');
 				self.$state.go('login')
 			}

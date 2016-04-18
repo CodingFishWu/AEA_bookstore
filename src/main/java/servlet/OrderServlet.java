@@ -23,6 +23,11 @@ public class OrderServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (req.getSession().getAttribute("name") == null) {
+            resp.setStatus(403);
+            return;
+        }
+
         String action = req.getParameter("action");
         Writer out = resp.getWriter();
         try {

@@ -22,9 +22,9 @@ class BookListCtrl {
 		self.CartService.addBook({bookId: self.books[index].id}, {}, function() {
 			alert("添加成功");
 		}, function(result) {
-			if (result.status == 401) {
+			if (result.status == 403) {
 				alert("请先登录");
-				status.go('login');
+				self.$state.go('login');
 			}
 		});
 	}
