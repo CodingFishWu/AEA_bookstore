@@ -22,8 +22,8 @@ class loginCtrl {
 		user.$login(function(result, err) {
 			self.$state.go('nav.book');
 		}, function(error) {
-			if (error.status == 403)
-				alert("密码错误");
+			console.log(error);
+			alert("密码错误");
 		});
 	}
 }
@@ -48,10 +48,8 @@ class signupCtrl {
 		});
 		user.$signup(function(result) {
 			self.$state.go('nav.book');
-		}, function(result) {
-			if (result.status == 403) {
-				alert("用户名已被使用");
-			}
+		}, function(err) {
+			alert("用户名已被使用");
 		});
 	}
 }

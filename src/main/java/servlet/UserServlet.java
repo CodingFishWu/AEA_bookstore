@@ -44,7 +44,7 @@ public class UserServlet extends HttpServlet {
             if (action.equals("register")) {
                 if (userService.regist(name, password)) {
 //                    System.out.println(name);
-                    req.setAttribute("name", name);
+                    req.getSession().setAttribute("name", name);
                     resp.setStatus(201);
                 }
                 else {
