@@ -31,13 +31,11 @@ public class OrderServlet extends HttpServlet {
         String action = req.getParameter("action");
         Writer out = resp.getWriter();
         try {
-            if (action.equals("list")) {
-                String name = (String)req.getSession().getAttribute("name");
-                Order[] orders = orderService.list(name);
-                JSONArray jsonArray = Tools.orderArrayToJSONArray(orders);
-                out.write(jsonArray.toString());
-                resp.setStatus(200);
-            }
+            String name = (String)req.getSession().getAttribute("name");
+            Order[] orders = orderService.list(name);
+            JSONArray jsonArray = Tools.orderArrayToJSONArray(orders);
+            out.write(jsonArray.toString());
+            resp.setStatus(200);
         }
         catch (Exception e) {
             e.printStackTrace();

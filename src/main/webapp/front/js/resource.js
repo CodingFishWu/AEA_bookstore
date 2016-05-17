@@ -149,9 +149,6 @@ angular.module('resources', ['ngResource'])
 		query: {
 			method: 'get',
 			url: baseUrl + '/order',
-			params: {
-				action: 'list'
-			},
 			isArray: true
 		}
 	});
