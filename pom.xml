@@ -64,6 +64,13 @@
           <version>2.8.1</version>
       </dependency>
 
+      <!--for aspect-->
+      <dependency>
+          <groupId>org.aspectj</groupId>
+          <artifactId>aspectjrt</artifactId>
+          <version>1.8.9</version>
+      </dependency>
+
 
 
 
