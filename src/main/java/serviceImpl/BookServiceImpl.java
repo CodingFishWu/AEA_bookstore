@@ -2,6 +2,9 @@ package serviceImpl;
 
 import dao.BookDao;
 import model.Book;
+import org.json.JSONObject;
+import redis.clients.jedis.Jedis;
+import servlet.Tools;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -17,20 +20,32 @@ public class BookServiceImpl implements service.BookService {
     @EJB
     BookDao bookDao;
 
+    Jedis jedis = new Jedis("localhost");
+
     @Override
     public Book[] getList() {
-        return bookDao.list();
+        Book[] books = bookDao.list();
+        cacheToRedis(books);
+        return books;
     }
 
     @Override
     public Book[] getList(String name, String author) {
-
-        return bookDao.list(name, author);
+        Book[] books = bookDao.list(name, author);
+        cacheToRedis(books);
+        return books;
     }
 
     @Override
     public Book get(String id) {
-        return bookDao.get(id);
+        String s = jedis.get(id);
+        if (s != null) {
+            Book book = Tools.jsonObjectToBook(new JSONObject(s));
+            return book;
+        }
+        else {
+            return bookDao.get(id);
+        }
     }
 
     @Override
@@ -40,11 +55,34 @@ public class BookServiceImpl implements service.BookService {
 
     @Override
     public boolean update(String id, Book book) {
-        return bookDao.update(id, book);
+        if (bookDao.update(id, book)) {
+            jedis.set(id, Tools.bookToJSONObject(book).toString());
+            return true;
+        }
+        else {
+            return false;
+        }
+//        return bookDao.update(id, book);
     }
 
     @Override
     public boolean delete(String id) {
-        return bookDao.delete(id);
+        if (bookDao.delete(id)) {
+            jedis.del(id);
+            return true;
+        }
+        else {
+            return false;
+        }
+//        return bookDao.delete(id);
+    }
+
+    private void cacheToRedis(Book[] books) {
+//        Jedis jedis = new Jedis("localhost");
+        for (Book book : books) {
+            String key = book.getId();
+            JSONObject jsonObject = Tools.bookToJSONObject(book);
+            jedis.set(key, jsonObject.toString());
+        }
     }
 }
